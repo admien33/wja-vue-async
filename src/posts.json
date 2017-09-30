@@ -1,0 +1,26 @@
+---
+layout: compress
+---
+
+{
+  "posts": [
+    {% for post in site.posts %}
+    	{
+	      "title": "{{ post.title }}",
+	      "url": "{{ post.url | relative_url }}",
+	      "date": "{{ post.date | date: "%B %-d, %Y" }}",
+	      "raw_date": "{{ post.date }}",
+
+	      {% assign text_splitted = post.content %}
+			  {% include utils/text/split-text-until-first-match.html 
+			    text= post.content
+			    match_ref='</h1>'
+			  %}
+			  {% assign description = text_splitted | strip_html | truncatewords: 30 %}
+			  "description": "{{ description }}"
+
+    	}
+    	{% unless forloop.last %},{% endunless %}
+    {% endfor %}
+  ]
+}

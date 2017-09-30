@@ -1,0 +1,18 @@
+{% comment %}no async defer option with webpack !{% endcomment %}
+
+{% assign path = site.webpack_assets.js.path_output | append: site.webpack_assets.js.output_dir | append: '/' %}
+{% comment %}filtering '.'{% endcomment %}
+{% assign path0 = path | slice: 0 %}
+{% if path0 =='.' %}
+  {% assign path = path | remove_first: '.' %} 
+{% endif %}
+
+{% for commonfile in site.webpack_assets.js.common %}
+  {% assign url_asset = site.baseurl | append: path | append: commonfile %}
+  <script src="{{url_asset}}"></script>'
+{% endfor %}
+
+{% if site.webpack_assets.js.add_custom_on_pages_else_default %}
+  {% assign url_asset = site.baseurl | append: path | append: name_id_custom_page | append: ".js" %}
+  <script src="{{url_asset}}"></script>
+{% endif %}

@@ -1,0 +1,39 @@
+---
+layout: compress
+---
+
+{% comment %} import scss template {% endcomment %}
+{% assign data_import_scss = '' %}
+
+{% for import in site.data.templates.pages.common.import_scss_noncritic %}
+	{% comment %}{% assign import = list_import_critic[iter_list] %}{% endcomment %}
+	{% assign _import = import | replace: '.scss', '' | replace: '.liquid','' | strip %}
+	{% assign import_scss = '@import ' | append: "'" | append: _import | append: "';" %}
+	{% assign data_import_scss = data_import_scss | append: import_scss %}
+{% endfor %}
+
+{% comment %}import var custom style{% endcomment %}
+{% assign var_custom_style = '' %}
+{% for var_scss in site.data.templates.var_scss_custom %}
+	{% assign key = var_scss[0] | prepend: '$' | append: ':' %}
+	{% assign value = var_scss[1] | append: ';' %}
+	{% assign var_custom_style = var_custom_style | append: key | append: value %}
+{% endfor %}
+
+{% comment %}json content{% endcomment %}
+{
+  "pages":
+  [
+		{
+			"id": "common_noncritic",
+		  "import_scss": "{{data_import_scss}}",
+		  "import_js": ""
+		}
+	],
+  "config":
+  {  	
+  	"var_custom_style": "{{var_custom_style}}",
+  	"delim_import_js": ""  	
+  }
+}
+

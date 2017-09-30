@@ -1,0 +1,77 @@
+---
+layout: compress
+---
+
+{% assign delim_js = '!$' %}
+
+
+{% comment %}import var custom style{% endcomment %}
+{% assign var_custom_style = '' %}
+{% for var_scss in site.data.templates.var_scss_custom %}
+	{% assign key = var_scss[0] | prepend: '$' | append: ':' %}
+	{% assign value = var_scss[1] | append: ';' %}
+	{% assign var_custom_style = var_custom_style | append: key | append: value %}
+{% endfor %}
+
+
+{% comment %}json content{% endcomment %}
+{
+  "pages":
+  [
+  	{% for custom_page in site.data.templates.pages.custom.pages %}
+
+  		{% assign data_import_scss = '' %}
+  		{% for import in custom_page.import_scss_critic %}
+				{% assign _import = import | replace: '.scss', '' | replace: '.liquid','' | strip %}
+				{% assign import_scss = '@import ' | append: "'" | append: _import | append: "';" %}
+				{% assign data_import_scss = data_import_scss | append: import_scss %}
+			{% endfor %}
+
+			{% assign data_import_js = '' %}
+			{% for import in custom_page.import_js %}
+				{% if data_import_js != '' %}
+					{% assign data_import_js = data_import_js | append: delim_js %}
+				{% endif %}
+				{% assign data_import_js = data_import_js | append: import %}
+			{% endfor %}
+
+  		{  		
+				"id": "{{custom_page.id}}",
+			  "import_scss": "{{data_import_scss}}",
+			  "import_js": "{{data_import_js}}"
+			},
+
+  	{% endfor %}
+
+  	{% comment %}default page{% endcomment %}
+  	{% for custom_page_default in site.data.templates.pages.custom.default %}
+
+	  	{% assign data_import_scss = '' %}
+			{% for import in custom_page_default.import_scss_critic %}
+				{% assign _import = import | replace: '.scss', '' | replace: '.liquid','' | strip %}
+				{% assign import_scss = '@import ' | append: "'" | append: _import | append: "';" %}
+				{% assign data_import_scss = data_import_scss | append: import_scss %}
+			{% endfor %}
+
+			{% assign data_import_js = '' %}
+			{% for import in custom_page_default.import_js %}
+				{% if data_import_js != '' %}
+					{% assign data_import_js = data_import_js | append: delim_js %}
+				{% endif %}
+				{% assign data_import_js = data_import_js | append: import %}
+			{% endfor %}
+
+			{
+				"id": "{{custom_page_default.id}}",
+			  "import_scss": "{{data_import_scss}}",
+			  "import_js": "{{data_import_js}}"
+			}{% unless forloop.last %},{% endunless %}
+			
+		{% endfor %}
+	],
+  "config":
+  {  	
+  	"var_custom_style": "{{var_custom_style}}",
+  	"delim_import_js": "{{delim_js}}"  	
+  }
+}

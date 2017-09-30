@@ -1,0 +1,44 @@
+{
+	"template": "default_go_to_top_primary",
+	"import_html":
+	[
+		{
+			"path": 
+			[
+				"templates/pages/extra/default_go_to_top_primary.html"
+				#// added directly in default.html layout
+			]
+		}
+	],
+	"import_scss":
+	[
+		{
+			"added_on": "common_critic",
+			"path": 
+			[
+
+			]
+		},
+		{
+			"added_on": "common_non_critic",
+			"path": 
+			[
+				#// "templates/pages/extra/default_go_to_top_primary.scss"
+				#// added directly in /src/_data/templates/pages/common.json
+				#// loop on templates not integrated
+			]
+		}
+	],
+	"import_js":
+	[
+		{
+			"added_on": "common_pages",
+			"path": 
+			[
+				#// "template_default_go_to_top_primary.js"
+				#// added directly in /src/_data/templates/pages/common.json
+				#// loop on templates not integrated
+			]			
+		}
+	]
+}

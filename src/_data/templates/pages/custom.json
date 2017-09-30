@@ -1,0 +1,36 @@
+{
+	"template": "custom",	
+	"pages": 
+	[ 
+	 	{ 
+	 		"id":"home",
+	 		"import_scss_critic":
+			[
+
+			],
+			"import_js":
+			[
+				"template_react_posts_home_page.js"
+			]
+			#// html template: 
+			#// templates/pages/home/template_react_posts_home_page.html
+			
+	 	}
+	],
+	"default": 
+	[ 
+	 	{ 
+	 		"id":"default", 
+	 		"import_scss_critic":
+			[
+
+			],
+			"import_js":
+			[
+				"template_react_default_page.js"
+			]
+			#// html template: 
+			#// templates/pages/default/template_react_default_page.html
+	 	}
+	]
+}

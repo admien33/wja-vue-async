@@ -1,0 +1,17 @@
+{
+	"template": "common",	
+	"import_scss_critic":
+	[
+		"common.scss"
+	],
+	"import_scss_noncritic":
+	[		
+		"font-awesome/font-awesome.4.7.0.modif.scss",
+		"templates/pages/extra/default_go_to_top_primary.scss"
+	],	
+	"import_js":
+	[
+		"template_default_common.js",
+		"template_default_go_to_top_primary.js"
+	]
+}

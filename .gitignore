@@ -1,0 +1,9 @@
+node_modules
+_site
+_site_assets_config
+src/.sass-cache
+src/.asset-cache
+src/.jekyll-metadata
+src/assets/dist
+src/_assets/css_wp
+webpack

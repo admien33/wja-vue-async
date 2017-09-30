@@ -1,0 +1,35 @@
+{%comment%}<!--
+param in :
+  include.url_page
+  include.custom_page_default
+param out / common param :
+  name_id_custom_page  
+ -->{%endcomment%}
+
+
+
+
+{% include utils/url/extract_name_id_from_url.html
+  url=include.url_page
+%}
+{% if name_id == null %}
+  {% assign name_id = site.collections_ext.root_page %}                
+{% endif %}
+
+{% comment %}output{% endcomment %}
+{% assign name_id_custom_page = name_id %}
+
+{% assign dbg_id = '' %}
+{% if include.custom_page_default != null %}  
+  {% assign custom_default = false %}
+  {% for page_custom in site.data.templates.pages.custom.pages %}   
+    {% if page_custom.id == name_id %}
+      {% assign custom_default = true %}    
+      {% break %}
+    {% endif %}   
+  {% endfor %}
+  {% if custom_default == false %}
+    {% assign name_id_custom_page = include.custom_page_default %}
+  {% endif %}
+{% endif %}
+
