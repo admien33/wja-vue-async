@@ -10,10 +10,11 @@
 			],
 			"import_js":
 			[
-				"template_react_posts_home_page.js"
+				"template_vue_posts_home_page.js"
 			]
 			#// html template: 
 			#// templates/pages/home/template_react_posts_home_page.html
+			#// templates/pages/home/template_vue_posts_home_page.html
 			
 	 	}
 	],
@@ -27,10 +28,11 @@
 			],
 			"import_js":
 			[
-				"template_react_default_page.js"
+				"template_vue_default_page.js"
 			]
 			#// html template: 
 			#// templates/pages/default/template_react_default_page.html
+			#// templates/pages/default/template_vue_default_page.html
 	 	}
 	]
 }

@@ -1,0 +1,50 @@
+{% comment %}This element's contents will be replaced with your component.{% endcomment %}
+
+<div id="app_users">
+  <div class='container'>
+    <p v-if="loading">Loading...</p>
+    <data-table
+    :header-title="'jsonplaceholder users'"
+    :columns="columns"
+    :data="data"
+    :click-row="clickRow" 
+    v-if="!loading"></data-table>
+  </div>
+</div>
+
+<div id="container_posts">
+  <h2>Parent template html</h2>
+  <async-component :my-message="message" :async-message="asyncmessage" :list-items="groceryList" :size="message"></async-component>
+  <hr>
+  <input v-model="message">
+  <my-component :my-message="message"></my-component>
+  <simple-counter></simple-counter>
+</div>
+
+<hr>
+<hr>
+<div id="app_posts">
+  <p> {% raw %}{{ message }}{% endraw %} </p>
+  <div>
+    <span v-if="seen">
+      <span v-bind:title="date_msg">
+        Hover your mouse over me for a few seconds to see my dynamically bound title!
+      </span>
+    </span>
+  </div>  
+  <input v-model="message">
+  <button v-on:click="reverseMessage">Reverse Message</button>
+  <input v-model="parentMsg">
+  <br>
+  <my-componentbis v-bind:my-message="parentMsg"></my-componentbis>
+  <my-componentbis my-message="hello bis"></my-componentbis>
+  <ol>   
+    <todo-item
+    v-for="item in groceryList"
+    v-bind:todo="item"
+    v-bind:key="item.id">
+    </todo-item>
+    </ol>
+</div>
+<hr>
+<hr>

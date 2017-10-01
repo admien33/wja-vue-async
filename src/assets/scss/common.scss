@@ -19,3 +19,11 @@
 #root {
   background-color: $primary-color;
 }
+
+#container_posts {
+	background-color: rgba($primary-color,0.8);
+
+	.async-component {
+		background-color: rgba($primary-color,0.95);
+	}
+}
