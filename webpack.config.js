@@ -71,7 +71,7 @@ const alias_path_template_js = 'alias_path_template_js';
 const list_entry = {};
 
 //on entry, push default vendor; fixed, could be push on config file
-list_entry[output_dir_js+'/vendor'] = ['jquery','vue'];
+list_entry[output_dir_js+'/vendor'] = ['jquery','vue','vue-router'];
 
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 assets_conf_list.forEach ( asset => {
@@ -245,7 +245,8 @@ const config = {
       'throttle-debounce': path.resolve(path_input_js,  './plugin/jquery.ba-throttle-debounce-wp.js'),
       'easing': path.resolve(path_input_js, './plugin/jquery.easing.1.3.2.js'),
       // 'scrollspyext': path.resolve(path_input_js,  './plugin/bootstrap.scrollspyext.3.3.7.js')
-      'vue$': path.resolve(path_input_js,  './vendor/vue.esm.2.4.4.js')
+      'vue$': path.resolve(path_input_js,  './vendor/vue.esm.2.4.4.js'),
+      'vue-router$': path.resolve(path_input_js,  './vendor/vue-router.esm.2.7.0.js')
     }
   }
 };

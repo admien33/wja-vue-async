@@ -1,6 +1,14 @@
 {% comment %}This element's contents will be replaced with your component.{% endcomment %}
 
 <div id="app_users">
+  <anchering-heading :level="2">First step Vue</anchering-heading>
+  <div>
+    <p>
+      Ask a yes/no question:
+      <input v-focus v-model="question">
+    </p>
+    <p>{% raw %}{{ answer }}{% endraw %}</p>
+  </div>
   <div class='container'>
     <p v-if="loading">Loading...</p>
     <data-table
@@ -10,18 +18,33 @@
     :click-row="clickRow" 
     v-if="!loading"></data-table>
   </div>
+  
+
+  <button v-on:click="shuffle">Mélanger</button>
+  <button v-on:click="add">Ajouter</button>
+  <button v-on:click="remove">Enlever</button>
+  <transition-group name="list-complete" tag="p">
+    <span
+      v-for="item in items"
+      v-bind:key="item"
+      class="list-complete-item"
+    >
+      {% raw %}{{ item }}{% endraw %}
+    </span>
+  </transition-group>
+
 </div>
 
-<div id="container_posts">
+{% comment %}<div id="container_posts">
   <h2>Parent template html</h2>
   <async-component :my-message="message" :async-message="asyncmessage" :list-items="groceryList" :size="message"></async-component>
   <hr>
   <input v-model="message">
   <my-component :my-message="message"></my-component>
   <simple-counter></simple-counter>
-</div>
+</div>{% endcomment %}
 
-<hr>
+{% comment %}<hr>
 <hr>
 <div id="app_posts">
   <p> {% raw %}{{ message }}{% endraw %} </p>
@@ -44,7 +67,14 @@
     v-bind:todo="item"
     v-bind:key="item.id">
     </todo-item>
-    </ol>
+  </ol>
+  <button v-on:click="show = !show">
+    Permuter
+  </button>
+  <transition name="fade">
+    <p v-if="show">bonjour</p>
+  </transition>
+
 </div>
 <hr>
-<hr>
+<hr>{% endcomment %}
